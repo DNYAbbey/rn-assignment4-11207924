@@ -1,13 +1,21 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, Linking } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Image, } from "react-native";
 
-export const LoginForm = ({onPress}) => {
-    const [userName, setUserName] = useState('');
-    const [email, setemail] = useState('');
+
+export const LoginForm = ({onPress,email, setemail, userName, setUserName}) => {
+    
 
     return (
         <View style={styles.form}>
-            <TextInput textContentType="text" placeholder={'Name'} style={styles.inputbox}/>
-            <TextInput textContentType="email" placeholder={'Email'} style={styles.inputbox}/>
+            <TextInput textContentType="text" 
+             placeholder={'Name'}
+             style={styles.inputbox}
+             onChangeText={setUserName}
+             value={userName}/>
+            <TextInput textContentType="email" 
+            placeholder={'Email'} 
+            style={styles.inputbox}
+            onChangeText={setemail}
+            value={email}/>
             <TouchableOpacity style={styles.loginButton} 
             onPress={onPress}>
                 Log in</TouchableOpacity>
