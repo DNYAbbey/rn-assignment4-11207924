@@ -101,27 +101,25 @@ function HomeScreen({ route }) {
                 <Text style={styles.title}>Popular Jobs</Text>
                 <Text style={styles.more}>See all</Text>
             </View>
-          <ScrollView style={{ flexGrow: 1, flexDirection: 'column' }}>
-          <FlatList
-              data={jobsData}
-              keyExtractor={(item) => item.id}
 
-              renderItem={({ item }) => (
-              
-                <PopularJobs
-                  jobTitle={item.jobTitle}
-                  company={item.company}
-                  pay={item.pay}
-                  location={item.location}
-                  Imagesrc={item.Imagesrc}
-                />
-              )}
-            />
-          </ScrollView>
-            
-        
+            <FlatList
+                data={jobsData}
+                keyExtractor={(item) => item.id}
+
+                renderItem={({ item }) => (
+                
+                  <PopularJobs
+                    jobTitle={item.jobTitle}
+                    company={item.company}
+                    pay={item.pay}
+                    location={item.location}
+                    Imagesrc={item.Imagesrc}
+                  />
+                )}
+              />
+
         </View>
-
+        
     </ScrollView>
   );
 }
@@ -200,7 +198,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#FAFAFD',
         padding: '20px',
-        font: 'poppins'
+        font: 'poppins',
+        flexGrow: 1,
+        flexDirection: 'column'
       },
       homeHeader:{
         display: 'flex',
