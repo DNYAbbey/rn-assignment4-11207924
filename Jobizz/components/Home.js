@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, FlatList } from 'react-native';
 import SearchFrame from './SearchFrame';
 import { FeaturedJobs } from './Featuredjobs';
+import { PopularJobs } from './Popularjobs';
 
 function HomeScreen({ route }) {
     const { userName, email } = route.params;
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
         <View style={styles.homeHeader}>
             <View>
                 <Text style={styles.name}> {userName}</Text>
@@ -18,7 +19,9 @@ function HomeScreen({ route }) {
                 <View style={styles.active}/>
             </View>
         </View>
+
         <SearchFrame/>
+
         <View>
             <View style={styles.titleView}>
                 <Text style={styles.title}>Featured Jobs</Text>
@@ -43,7 +46,7 @@ function HomeScreen({ route }) {
                 />
                  <FeaturedJobs 
                     background={require('../assets/cardviolet.png')}
-                    companyLogo={require('../assets/google.png')}
+                    companyLogo={require('../assets/amazon-color-svgrepo-com.svg')}
                     jobTitle={'Database Administrator'}
                     company={'Amazon'}
                     pay= {'$225,000'}
@@ -51,7 +54,7 @@ function HomeScreen({ route }) {
                 />
                  <FeaturedJobs 
                     background={require('../assets/cardwine.png')}
-                    companyLogo={require('../assets/google.png')}
+                    companyLogo={require('../assets/apple-logo-svgrepo-com.svg')}
                     jobTitle={'DevOps Engineer'}
                     company={'Apple'}
                     pay= {'$250,000'}
@@ -59,9 +62,9 @@ function HomeScreen({ route }) {
                 />
                 <FeaturedJobs 
                     background={require('../assets/cardorange.png')}
-                    companyLogo={require('../assets/google.png')}
+                    companyLogo={require('../assets/alibaba-svgrepo-com.svg')}
                     jobTitle={'Marketing Manager'}
-                    company={'Adis Ababa'}
+                    company={'Alibaba'}
                     pay= {'$150,000'}
                     location={'Takoradi, Ghana'}
                 />
@@ -83,7 +86,7 @@ function HomeScreen({ route }) {
                 />
                 <FeaturedJobs 
                   background={require('../assets/cardblack.png')}
-                  companyLogo={require('../assets/google.png')}
+                  companyLogo={require('../assets/amazon-color-svgrepo-com.svg')}
                   jobTitle={'Software Engineer'}
                   company={'Amazon'}
                   pay= {'$260,000'}
@@ -92,17 +95,104 @@ function HomeScreen({ route }) {
                 
             </ScrollView>
         </View>
+
         <View>
             <View style={styles.titleView}>
                 <Text style={styles.title}>Popular Jobs</Text>
                 <Text style={styles.more}>See all</Text>
             </View>
+          <ScrollView style={{ flexGrow: 1, flexDirection: 'column' }}>
+          <FlatList
+              data={jobsData}
+              keyExtractor={(item) => item.id}
+              renderItem={({ item }) => (
+              
+                <PopularJobs
+                  jobTitle={item.jobTitle}
+                  company={item.company}
+                  pay={item.pay}
+                  location={item.location}
+                  Imagesrc={item.Imagesrc}
+                />
+              )}
+            />
+          </ScrollView>
             
+        
         </View>
 
-    </View>
+    </ScrollView>
   );
 }
+
+const jobsData = [
+  {
+    id: '1',
+    jobTitle: 'Jr Excutive',
+    company: 'Burger King',
+    pay: '$96,000/y',
+    location: 'Los Angelos, US',
+    Imagesrc: require('../assets/burgerKing.png'),
+  },
+  {
+    id: '2',
+    jobTitle: 'Product Manager',
+    company: 'Beats',
+    pay: '$84,000/y',
+    location: 'Florida, US',
+    Imagesrc: require('../assets/beats.png'),
+  },
+  {
+    id: '3',
+    jobTitle: 'Product Manager',
+    company: 'Facebook',
+    pay: '$98,000/y',
+    location: 'Florida, US',
+    Imagesrc: require('../assets/facebook.png'),
+  },
+
+  {
+    id: '4',
+    jobTitle: 'Data Scientist',
+    company: 'Google',
+    pay: '$96,000/y',
+    location: 'Los Angelos, US',
+    Imagesrc: require('../assets/google.png'),
+  },
+  {
+    id: '5',
+    jobTitle: 'Digital Markerter',
+    company: 'McDonalds',
+    pay: '$60,000/y',
+    location: 'Texas, US',
+    Imagesrc: require('../assets/mcdonalds-svgrepo-com.svg'),
+  },
+  {
+    id: '6',
+    jobTitle: 'Software Engineer',
+    company: 'Microsoft',
+    pay: '$80,000/y',
+    location: 'Califonia, US',
+    Imagesrc: require('../assets/microsoft-svgrepo-com.svg'),
+  },
+  {
+    id: '7',
+    jobTitle: 'Data Analyst',
+    company: 'Google',
+    pay: '$76,000/y',
+    location: 'Georgia, US',
+    Imagesrc: require('../assets/google.png'),
+  },
+  {
+    id: '8',
+    jobTitle: 'Data Scientist',
+    company: 'Microsoft',
+    pay: '$96,000/y',
+    location: 'New York, US',
+    Imagesrc: require('../assets/microsoft-svgrepo-com.svg'),
+  },
+];
+
 
 const styles = StyleSheet.create({
     container: {
@@ -148,6 +238,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginLeft: '10px',
+        marginBottom:'20px'
       },
       title: {
         color: '#0D0D26',

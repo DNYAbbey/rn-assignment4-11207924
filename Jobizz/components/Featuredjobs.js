@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         width: '280px',
         height: '186px',
         borderRadius: '24px',
-        margin: '20px',
+        
         marginBottom: '35px',
         marginLeft: '8px',
       },

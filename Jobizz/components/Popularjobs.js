@@ -1,47 +1,63 @@
 import React from 'react';
-import { View, StyleSheet, FlatList, Text } from 'react-native';
+import { View, StyleSheet, Text, Image, } from 'react-native';
 
 
-export const PopularJobs = () => {
+export const PopularJobs = ({ jobTitle, company, pay, location, Imagesrc }) => {
   return (
+      <View style={styles.container}>
+        <Image source={Imagesrc } style={styles.image} />
         <View>
-        <Text style={styles.subheader}>Ongoing tasks</Text>
-        <FlatList 
-            data={[
-                    { key : "1", text : "Mobile App Development" }, { key : "2", text : "Web Development" },
-                    { key : "3", text : "Push Ups" }, { key : "4", text : "Planks" },
-                    { key : "5", text : "Preparation For Quiz" }, { key : "6", text : "BreakFast" },
-                    { key : "7", text : "Reading" }, { key : "8", text : "Chores" },
-                    { key : "9", text : "UI Design" }, { key : "10", text : "Weight Lifting" }, 
-                    { key : "11", text : "Math Assignment" },{ key : "12", text : "Preparation For Exams" }, { key : "13", text : "BreakFast" },
-                    { key : "14", text : "Meeting At 10:30 AM" }, { key : "15", text : "Laundry" },
-                ]}
-            renderItem={ ({item}) => <Text style={styles.tasks}>{ item.text }</Text> }
-        />
+          <Text style={styles.jobTitle}>{jobTitle}</Text>
+          <Text style={styles.company}>{company}</Text>
         </View>
+        <View style={styles.right}>
+          <Text style={styles.pay}>{pay}</Text>
+          <Text style={styles.company}>{location}</Text>
+        </View>
+      </View>
   );
 };
 
 const styles = StyleSheet.create({
-    subheader:{
-        fontSize: '20px',
-        fontWeight: '700',
-        marginLeft: '23px',
-        marginTop: '42px',
-      },
-      tasks:{
-        height: '128px',
-        width: '90%',
-        border: 'solid 1px #E8D1BA',
-        backgroundColor: '#FBF9F7',
-        borderRadius: '15px',
-        fontWeight: 700,
-        marginLeft: '20px',
-        alignContent: 'center',
-        paddingLeft: '20px',
-        marginTop: '20px',
-        fontSize: '16px',
-      },
+    container: {
+      backgroundColor: 'white',
+      width: '97%',
+      height: '74px',
+      flexDirection: 'row',
+      marginBottom: '15px',
+      justifyContent: 'space-evenly',
+      alignItems: 'center',
+      paddingLeft: '15px',
+      paddingRight: '15px',
+    },
+    jobTitle: {
+      fontWeight: 600,
+      fontSize: '14px',
+      lineHeight: '18.2px',
+      color: '#0D0D26',
+    },
+    pay:{
+      fontWeight: 400,
+      fontSize: '12px',
+      lineHeight: '19.2px',
+      color: '#0D0D26',
+      textAlign: 'right',
+    },
+    company: {
+      fontWeight: '400',
+      fontSize: '13px',
+      lineHeight: '20.2px',
+      color: '#0D0D26',
+    
+    },
+    image: {
+      width: '42px',
+      height: '43px',
+    },
+    right: {
+      alignItems: 'right',
+    
+    },
 });
 
 
