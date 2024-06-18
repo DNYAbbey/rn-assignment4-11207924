@@ -5,7 +5,9 @@ import { View, StyleSheet, Text, Image, } from 'react-native';
 export const PopularJobs = ({ jobTitle, company, pay, location, Imagesrc }) => {
   return (
       <View style={styles.container}>
-        <Image source={Imagesrc } style={styles.image} />
+        <View>
+         <Image source={Imagesrc } style={styles.image} />
+        </View>
         <View>
           <Text style={styles.jobTitle}>{jobTitle}</Text>
           <Text style={styles.company}>{company}</Text>

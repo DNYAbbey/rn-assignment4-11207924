@@ -105,6 +105,7 @@ function HomeScreen({ route }) {
           <FlatList
               data={jobsData}
               keyExtractor={(item) => item.id}
+
               renderItem={({ item }) => (
               
                 <PopularJobs
