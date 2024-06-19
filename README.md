@@ -1,6 +1,6 @@
-# rn-assignment4-11207924
+# Jobizz: A Job Search PlatForm (FrontEnd Only)
 
-## Jobizz: a Job Search PlatForm (FrontEnd Only)
+### Student ID: 11207924
 
 Various components were used for this projects and they include:
 - Login component: The purpose of this component is to enable the user login in. The component takes a few props including userName, email, setEmail, setUserName which are used to get and set the them when text input is changed to  enable user input to be passed to the home screen component and onPress which defines what should happen when the login button is clicked. This component also gives the user sign in options besides the sign in with username and email. 
